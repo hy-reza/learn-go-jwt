@@ -12,13 +12,16 @@ This project is a RESTful API for managing products with user authentication and
 
 ## Endpoints
 
-1. Register - `POST /register`
-2. Login - `POST /login`
-3. Create Product - `POST /products`
-4. Get All Products - `GET /products`
-5. Get Product by ID - `GET /products/:id`
-6. Update Product - `PUT /products/:id`
-7. Delete Product - `DELETE /products/:id`
+| Method | Endpoint                | Middleware                      | Description                |
+|--------|-------------------------|---------------------------------|----------------------------|
+| POST   | /users/register         |                                 | Register a new user        |
+| POST   | /users/login            |                                 | Login a user               |
+| GET    | /products/              | Authentication                  | Get all products           |
+| GET    | /products/:productId    | Authentication, ProductAuthorization | Get a product by ID      |
+| POST   | /products/              | Authentication                  | Create a new product       |
+| PUT    | /products/:productId    | Authentication, ProductAuthorization | Update a product by ID  |
+| DELETE | /products/:productId    | Authentication, ProductAuthorization | Delete a product by ID  |
+
 
 ## Middleware
 
