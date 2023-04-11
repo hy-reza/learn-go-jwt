@@ -45,3 +45,9 @@ To run the project locally, follow these steps:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you find this project useful, please consider giving it a ⭐️ on [GitHub](https://github.com/hy-reza/learn-go-jwt). Your support is greatly appreciated! 😄
+
+
