@@ -55,22 +55,3 @@ func ProductAuthorization() gin.HandlerFunc {
 		c.Next()
 	}
 }
-
-func AdminAuthorization() gin.HandlerFunc {
-	return func(c *gin.Context) {
-
-		userData := c.MustGet("userData").(jwt.MapClaims)
-		userRole := userData["role"]
-
-		if userRole != "admin" {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
-				"error":   "Unauthorized",
-				"message": "you are not allowed to access this data",
-			})
-
-			return
-		}
-
-		c.Next()
-	}
-}
