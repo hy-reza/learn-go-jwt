@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"fmt"
 	"go-jwt/helpers"
 	"net/http"
 
@@ -21,6 +22,8 @@ func Authentication() gin.HandlerFunc {
 
 			return
 		}
+
+		fmt.Print(verifyToken)
 
 		c.Set("userData", verifyToken)
 		c.Next()

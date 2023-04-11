@@ -10,10 +10,11 @@ import (
 
 var secretKey = "rahasia"
 
-func GenerateToken(id uint, email string) string {
+func GenerateToken(id uint, email, role string) string {
 	claims := jwt.MapClaims{
 		"id":    id,
 		"email": email,
+		"role":  role,
 	}
 
 	parseToken := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -24,7 +25,7 @@ func GenerateToken(id uint, email string) string {
 
 func VerifyToken(c *gin.Context) (interface{}, error) {
 	errResponse := errors.New("sign in to proceed")
-	headerToken := c.Request.Header.Get("Authorized")
+	headerToken := c.Request.Header.Get("Authorization")
 	bearer := strings.HasPrefix(headerToken, "Bearer")
 
 	if !bearer {
