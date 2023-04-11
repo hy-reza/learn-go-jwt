@@ -1,4 +1,4 @@
-# Assignment 10 FGA Go Hactiv8 - REST API Product with Login and Register
+# Assignment 10 FGA Go Hactiv8 - REST API Product
 
 This project is a RESTful API for managing products with user authentication and authorization features. The API is built using Golang and provides the following functionality:
 
