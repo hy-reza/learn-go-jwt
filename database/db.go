@@ -4,22 +4,32 @@ import (
 	"fmt"
 	"go-jwt/models"
 	"log"
+	"os"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 var (
-	host     = "127.0.0.1"
-	user     = "postgres"
-	password = "rahasia"
-	dbPort   = "5432"
-	dbname   = "simple_api"
-	db       *gorm.DB
-	err      error
+	db  *gorm.DB
+	err error
 )
 
+func init() {
+	// Load environment variables from .env file
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file:", err)
+	}
+}
+
 func StartDB() {
+	host := os.Getenv("DB_HOST")
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	dbPort := os.Getenv("DB_PORT")
+	dbname := os.Getenv("DB_NAME")
+
 	config := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", host, user, password, dbname, dbPort)
 	dsn := config
 	db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
